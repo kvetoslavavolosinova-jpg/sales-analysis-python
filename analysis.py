@@ -23,14 +23,12 @@ import matplotlib.pyplot as plt
 
 df["revenue"] = df["price"] * df["quantity"]
 
-top_products = df.groupby("product")["revenue"].sum()
+top_products = df.groupby("product")["revenue"].sum().sort_values(ascending=True)
 
-top_products.plot(kind="bar")
-plt.title("Top Products by Revenue")
-plt.xlabel("Product")
-plt.ylabel("Revenue")
+plt.figure(figsize=(8,5))
+top_products.plot(kind="barh")
+plt.title("Revenue by Product")
+plt.xlabel("Revenue")
+plt.ylabel("Product")
 plt.tight_layout()
 plt.show()
-print("\n======================")
-print("DATA ANALYSIS REPORT")
-print("======================")
